@@ -1,0 +1,17 @@
+apiVersion: apps/v1 #defining the the version
+kind: Deployment  #defining the kind of the object
+metadata:    #some extra information about the object
+  name: posts-depl
+spec:  #specifications of the Deployment
+  replicas: 1  #number of copies of the pod(which are also known as containers)
+  selector:  #selector to give a unique name for selection purpose
+    matchLabels:
+      app: posts
+  template: #here defining the lable of template for selection purpose
+    metadata:
+      labels:
+        app: posts
+    spec: #specifications of the pdf for example containers
+      containers:
+        - name: posts #name of the container that will inside the kubernetes cluster
+          image: manmeetmoudgill/posts:latest #name of the image
