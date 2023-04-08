@@ -6,9 +6,13 @@ const app = express();
 app.use(bodyParser.json());
 
 app.get("/comments", (req, res) => {
-  axios.post("http://localhost:4003/events", {
-    type: "Comment Get Request",
-  });
+  axios
+    .post("http://localhost:4003/events", {
+      type: "Comment Get Request",
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
 
   res.json({
     message: "comments get request",

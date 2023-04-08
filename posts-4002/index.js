@@ -6,9 +6,13 @@ const app = express();
 app.use(bodyParser.json());
 
 app.get("/posts", (req, res) => {
-  axios.post("http://localhost:4003/events", {
-    type: "Post Get Request",
-  });
+  axios
+    .post("http://localhost:4003/events", {
+      type: "Post Get Request",
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
   res.json({
     message: "posts get request",
   });
