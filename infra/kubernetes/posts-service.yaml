@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service #defining the service object to expose the api to outer world only for dev purposes
+metadata:
+  name: posts-srv #name of service
+spec:
+  type: NodePort #defining the typo of the Service
+  selector:
+    app: posts
+  ports:
+    - name: posts
+      protocol: TCP
+      port: 4002
+      targetPort: 4002

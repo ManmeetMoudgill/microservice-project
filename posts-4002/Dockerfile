@@ -1,12 +1,8 @@
-FROM node:18-alpine as  posts-microservice
+FROM node:alpine
 
-WORKDIR /usr/src/app
-
-COPY package*.json ./
-
+WORKDIR /app
+COPY package.json ./
 RUN npm install
+COPY ./ ./
 
-COPY . .
-
-CMD [ "npm", "start" ]
-
+CMD ["npm", "start"]
