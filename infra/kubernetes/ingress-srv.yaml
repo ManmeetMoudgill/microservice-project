@@ -1,0 +1,39 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-srv
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules: #specifing the routing rules to tell the ingress-controller how to take outcoming request and route them to the different pod
+    - host: posts.com
+      http:
+        paths:
+          - path: /posts
+            pathType: Prefix
+            backend:
+              service:
+                name: posts-clusterip-srv
+                port:
+                  number: 4002
+          - path: /post/create
+            pathType: Prefix
+            backend:
+              service:
+                name: posts-clusterip-srv
+                port:
+                  number: 4002
+          - path: /comments
+            pathType: Prefix
+            backend:
+              service:
+                name: comments-clusterip-srv        
+                port:
+                  number: 4001
+          - path: /comment/create
+            pathType: Prefix
+            backend:
+              service:
+                name: comments-clusterip-srv        
+                port:
+                  number: 4001        
