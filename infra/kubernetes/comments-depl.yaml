@@ -15,3 +15,16 @@ spec:  #specifications of the Deployment
       containers:
         - name: comments #name of the container that will inside the kubernetes cluster
           image: manmeetmoudgill/comments:latest #name of the image
+--- #this is used to add more than an object in a single file
+apiVersion: v1
+kind: Service
+metadata:
+  name: comments-clusterip-srv
+spec:
+  selector:
+    app: comments
+  ports:
+    - name: posts
+      protocol: TCP
+      port: 4001
+      targetPort: 4001

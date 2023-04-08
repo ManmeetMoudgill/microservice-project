@@ -15,3 +15,16 @@ spec:  #specifications of the Deployment
       containers:
         - name: posts #name of the container that will inside the kubernetes cluster
           image: manmeetmoudgill/posts:latest #name of the image
+--- #this is used to add more than an object in a single file
+apiVersion: v1
+kind: Service
+metadata:
+  name: posts-clusterip-srv
+spec:
+  selector:
+    app: posts
+  ports:
+    - name: posts
+      protocol: TCP
+      port: 4002
+      targetPort: 4002

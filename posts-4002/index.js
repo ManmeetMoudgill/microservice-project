@@ -6,9 +6,9 @@ const app = express();
 app.use(bodyParser.json());
 
 app.get("/posts", async (req, res) => {
-  //await axios.post("http://localhost:4003/events", {
-  //  type: "Post Get Request",
-  //});
+  await axios.post("http://event-bus-clusterip-srv:4003/events", {
+    type: "Post Get Request",
+  });
 
   res.json({
     message: "posts get request",
@@ -16,10 +16,10 @@ app.get("/posts", async (req, res) => {
 });
 
 app.post("/post/create", async (req, res) => {
-  //await axios.post("http://localhost:4003/events", {
-  //  type: "Post Post Request called",
-  //  data: req.body,
-  //});
+  await axios.post("http://event-bus-clusterip-srv:4003/events", {
+    type: "Post Post Request called",
+    data: req.body,
+  });
   res.json({
     data: req.body,
   });
